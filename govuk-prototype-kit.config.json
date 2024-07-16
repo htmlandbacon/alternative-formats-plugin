@@ -1,0 +1,9 @@
+{
+  "meta": {
+    "description": "This plugin provides a version of alternative formats."
+  },
+  "nunjucksPaths": ["/views"],
+  "nunjucksFilters": [
+    "/filters.js"
+  ]
+}

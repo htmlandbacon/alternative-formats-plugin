@@ -1,0 +1,38 @@
+{% extends "layouts/main.html" %}
+
+{% from "govuk/components/back-link/macro.njk" import govukBackLink %}
+{% from "govuk/components/warning-text/macro.njk" import govukWarningText %}
+{% from "govuk/components/button/macro.njk" import govukButton %}
+
+{% set hideNav = true %}
+{# {% set hideBack = true %} #}
+
+{# {% block beforeContent %}
+  {{ govukBackLink({
+      "text": "Back",
+      "href": "javascript: window.history.go(-1)"
+    }) 
+  }}
+{% endblock %} #}
+
+{% block pageTitle %}
+  Data cleared – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block content %}
+
+  <h1 class="govuk-heading-m">
+    Data cleared
+  </h1>
+
+  <p>
+    The session data has been cleared.
+  </p>
+
+  <p>
+    <a href="index">
+      Prototype start page
+    </a>
+  </p>
+
+{% endblock %}

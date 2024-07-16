@@ -1,0 +1,103 @@
+{% extends "layouts/main.html" %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript: window.history.go(-1)"
+  }) }}
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds-from-desktop">
+
+     
+      <h1 class="govuk-heading-xl">
+        Check your answers
+      </h1>
+
+
+      <h2 class="govuk-heading-m">
+        How we will contact you
+      </h2>
+
+      <dl class="govuk-summary-list">
+
+          
+          {% for letterFormat in data["altFormatsV2Journey1"]["letters"] %}
+
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">
+                When we write to you 
+              </dt>
+              <dd class="govuk-summary-list__value">
+                <p>{{ letterFormat.format | altFormatsV2Journey1Label }}</p>
+                <ul class="govuk-list govuk-list--bullet">
+                  {% for value in letterFormat | altFormatsV2Journey1ListFormats %}
+                    <li>{{ value }}</li>
+                  {% endfor %}
+                </ul>
+              </dd>
+              <dd class="govuk-summary-list__actions">
+                <a class="govuk-link" href="./amend/letter/{{ letterFormat.id }}">
+                  Change<span class="govuk-visually-hidden"> {{ letterFormat.format | altFormatsV2Journey1Label }}</span>
+                </a>
+              </dd>
+            </div>
+            
+          {% endfor %}
+
+          {% for phoneCallFormat in data["altFormatsV2Journey1"]["phoneCalls"] %}
+
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">
+                When we speak to you
+              </dt>
+              <dd class="govuk-summary-list__value">
+                <p>{{ phoneCallFormat.format | altFormatsV2Journey1Label }}</p>
+                <ul class="govuk-list govuk-list--bullet">
+                  {% for value in phoneCallFormat | altFormatsV2Journey1ListFormats %}
+                    <li>{{ value }}</li>
+                  {% endfor %}
+                </ul>
+              </dd>
+
+              <dd class="govuk-summary-list__actions">
+                <a class="govuk-link" href="./amend/phoneCall/{{ phoneCallFormat.id }}">
+                  Change<span class="govuk-visually-hidden"> {{ phoneCallFormat.format | altFormatsV2Journey1Label }}</span>
+                </a>
+              </dd>
+            </div>
+            
+          {% endfor %}
+          
+          <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">
+                Do you need any other help?
+              </dt>
+              <dd class="govuk-summary-list__value">
+                <p>{{ data["altFormatsV2Journey1"]["feedback"]["foundFormat"] | title }}</p>
+                
+                {% if data["altFormatsV2Journey1"]["feedback"]["foundFormat"] == "yes" %}
+                  <ul class="govuk-list govuk-list--bullet">
+                    <li>{{ data["altFormatsV2Journey1"]["feedback"]["preferredAltFormats"] }}</li>
+                  </ul>
+                {% endif %}
+              </dd>
+               <dd class="govuk-summary-list__actions">
+                <a class="govuk-link" href="feedback-found-format.html">
+                  Change<span class="govuk-visually-hidden"> </span>
+                </a>
+            </div>
+        </dl>
+        <div class="govuk-button-group">
+          {{ govukButton({
+            href: data.alternative_formats_exit_url | d("/"),
+            text: "Continue"
+          }) }}
+        </div>
+      
+    </div>
+  </div>
+{% endblock %}
+

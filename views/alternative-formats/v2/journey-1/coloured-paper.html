@@ -1,0 +1,72 @@
+{% extends "layouts/main.html" %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript: window.history.go(-1)"   
+  }) }}
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+
+      <form class="form" action="/alternative-formats/v2/journey-1/coloured-paper" method="post" novalidate>
+      
+       
+        
+        {% set colouredPaperHtml %}
+          {{ govukInput({
+            name: "[altFormatsV2Journey1].[letter].[paperColourOther]",
+            value: data["altFormatsV2Journey1"]["letter"]["paperColourOther"],
+            classes: "govuk-input--width-10",
+            label: {
+              text: "Colour"
+            } 
+          }) }}
+        {% endset -%}
+        
+        {{ govukRadios({
+          id: "paper-colour",
+          name: "[altFormatsV2Journey1].[letter].[paperColour]",
+          value: data["altFormatsV2Journey1"]["letter"]["paperColour"],
+          fieldset: {
+            legend: {
+              text: "What colour paper do you need?",
+              isPageHeading: true,
+              classes: "govuk-fieldset__legend--l"
+            }
+            
+          },
+          items: [
+            {
+              value: "cream",
+              text: "cream" | altFormatsV2Journey1Label
+            },
+            {
+              value: "pale-pink",
+              text: "pale-pink" | altFormatsV2Journey1Label
+            },
+            {
+              value: "pastel-blue",
+              text: "pastel-blue" | altFormatsV2Journey1Label
+            },
+            {
+              value: "pastel-yellow",
+              text: "pastel-yellow" | altFormatsV2Journey1Label
+            }
+            
+          ]
+        }) }}
+
+        {{ govukButton({
+          text: "Continue"
+        }) }}
+
+      </form>
+    </div>
+  </div>
+{% endblock %}
+
+

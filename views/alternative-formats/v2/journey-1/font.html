@@ -1,0 +1,79 @@
+{% extends "layouts/main.html" %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript: window.history.go(-1)"   
+  }) }}
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+
+      <form class="form" action="/alternative-formats/v2/journey-1/font" method="post" novalidate>
+        
+        {% set fontOtherHtml %}
+          {{ govukInput({
+            name: "[altFormatsV2Journey1].[letter].[fontOther]",
+            value: data["altFormatsV2Journey1"]["letter"]["fontOther"],
+            classes: "govuk-input--width-10",
+            label: {
+              text: "Font"
+            } 
+          }) }}
+        {% endset -%}
+
+       
+        
+        {{ govukRadios({
+          id: "font",
+          name: "[altFormatsV2Journey1].[letter].[font]",
+          value: data["altFormatsV2Journey1"]["letter"]["font"],
+          fieldset: {
+            legend: {
+              text: "What font do you need?",
+              isPageHeading: true,
+              classes: "govuk-fieldset__legend--l"
+            }
+            
+          },
+          items: [
+            {
+              value: "arial",
+              text: "arial" | altFormatsV2Journey1Label
+            },
+            {
+              value: "calibri",
+              text: "calibri" | altFormatsV2Journey1Label
+            },
+            {
+              value: "helvetica",
+              text: "helvetica" | altFormatsV2Journey1Label
+            },
+            {
+              value: "tahoma",
+              text: "tahoma" | altFormatsV2Journey1Label
+            },
+            {
+              value: "times-new-roman",
+              text: "times-new-roman" | altFormatsV2Journey1Label
+            },
+            {
+              value: "verdana",
+              text: "verdana" | altFormatsV2Journey1Label
+            }
+          ]
+        }) }}
+
+        {{ govukButton({
+          text: "Continue"
+        }) }}
+
+      </form>
+    </div>
+  </div>
+{% endblock %}
+
+

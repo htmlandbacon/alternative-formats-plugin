@@ -1,0 +1,32 @@
+{
+  "name": "alternative-formats-files-prototype",
+  "version": "0.1.0",
+  "description": "A select of views and routes for alternative formats a prototype",
+  "main": "index.js",
+  "files": [
+    "views",
+    "govuk-prototype-kit.config.json",
+    "*.js",
+    "README.md"
+  ],
+  "scripts": {
+    "lint": "eslint ."
+  },
+  "author": {
+    "name": "DWP Design System",
+    "url": "https://design-system.dwp.gov.uk"
+  },
+  "license": "ISC",
+  "devDependencies": {
+    "@dwp/eslint-config-base": "7.0.0",
+    "@eslint/js": "9.6.0",
+    "eslint": "9.6.0",
+    "eslint-config-prettier": "9.1.0",
+    "eslint-plugin-prettier": "5.1.3",
+    "globals": "15.8.0",
+    "prettier": "3.3.2"
+  },
+  "peerDependencies": {
+    "govuk-prototype-kit": "13.16.2"
+  }
+}

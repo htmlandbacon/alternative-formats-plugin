@@ -1,0 +1,63 @@
+{% extends "layouts/main.html" %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript: window.history.go(-1)"  
+  }) }}
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+
+      <form class="form" action="/alternative-formats/v2/journey-1/how-would-you-like-phone-calls" method="post" novalidate>
+
+       
+        
+        {{ govukRadios({
+          id: "format",
+          name: "[altFormatsV2Journey1].[phoneCall].[format]",
+          value: data["altFormatsV2Journey1"]["phoneCall"]["format"],
+            fieldset: {
+            legend: {
+              text: "How should we contact you if we need to speak to you?",
+              isPageHeading: true,
+              classes: "govuk-fieldset__legend--l
+            "
+            }
+            
+          },
+          hint: {
+            text: "We usually contact you by phone if we need to speak to you. Select the best option for your needs."  
+         },
+          items: [
+            {
+              value: "standard-phone-call",
+              text: "standard-phone-call" | altFormatsV2Journey1Label(true)
+            },
+            {
+              value: "relay-uk",
+              text: "relay-uk"  | altFormatsV2Journey1Label
+            },
+            {
+              value: "textphone",
+              text: "textphone"  | altFormatsV2Journey1Label
+            },
+            {
+              value: "signing-lipspeaking",
+              text: "signing-lipspeaking"  | altFormatsV2Journey1Label
+            }
+          ]
+        }) }}
+
+        {{ govukButton({
+          text: "Continue"
+        }) }}
+      </form>
+    </div>
+  </div>
+{% endblock %}
+
+

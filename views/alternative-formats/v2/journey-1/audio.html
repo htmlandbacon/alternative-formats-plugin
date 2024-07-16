@@ -1,0 +1,60 @@
+{% extends "layouts/main.html" %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript: window.history.go(-1)" 
+  }) }}
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+
+      <form class="form" action="/alternative-formats/v2/journey-1/audio" method="post" novalidate>
+        
+       
+        
+        {{ govukRadios({
+          id: "audio-format",
+          name: "[altFormatsV2Journey1].[letter].[audioFormat]",
+          value: data["altFormatsV2Journey1"]["letter"]["audioFormat"],
+          fieldset: {
+            legend: {
+              text: "What type of audio do you need?",
+              isPageHeading: true,
+              classes: "govuk-fieldset__legend--l"
+            }
+            
+          },
+          items: [
+          {
+            value: "cd",
+            text: "cd" | altFormatsV2Journey1Label
+          }, 
+          {
+              value: "mp3",  
+              text: "mp3" | altFormatsV2Journey1Label
+            },
+            {
+              value: "cassette-tape",
+              text: "cassette-tape" | altFormatsV2Journey1Label
+            },
+            {
+              value: "dvd",
+              text: "dvd" | altFormatsV2Journey1Label
+            }
+          ]
+        }) }}
+        
+        {{ govukButton({
+          text: "Continue"
+        }) }}
+
+      </form>
+    </div>
+  </div>
+{% endblock %}
+
+
