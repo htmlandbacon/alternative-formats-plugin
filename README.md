@@ -15,7 +15,7 @@ npm install github:dwp/alternative-formats-files-prototype
 ```
 // Add your routes normally this would be routes.js
 
-const alternativeFormatsPrototype = require("@dwp/alternative-formats-prototype-plugin");
+const alternativeFormatsPrototype = require("alternative-formats-files-prototype");
 
 alternativeFormatsPrototype(router);
 ```
