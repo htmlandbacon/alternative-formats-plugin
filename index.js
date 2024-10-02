@@ -18,7 +18,7 @@ module.exports = (router) => {
   /**
    * Clear data
    *
-   * Clears only alternative formats alternative-formats/dwp-alternative-formats-plugin/v1/journey-3 data
+   * Clears only alternative formats dwp-alternative-formats-plugin/v1/journey-3 data
    *
    */
   router.post("/dwp-alternative-formats-plugin/v2/journey-1/clear-data", (req, res) => {

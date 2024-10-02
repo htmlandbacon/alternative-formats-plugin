@@ -27,7 +27,7 @@ alternativeFormatsPrototype(router);
 {{ 
     govukButton({
         text: "Start now",
-        href: "/dwp-alternative-formats-plugin/start&alternative_formats_exit_url=/end",
+        href: "/dwp-alternative-formats-plugin/start?alternative_formats_exit_url=/end",
         isStartButton: true
     })
 }}
