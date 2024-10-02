@@ -12,33 +12,30 @@
     <div class="govuk-grid-column-two-thirds">
 
 
-      <form class="form" action="/alternative-formats/v2/journey-1/feedback-found-format" method="post" novalidate>
+      <form class="form" action="/dwp-alternative-formats-plugin/v2/journey-1/braille" method="post" novalidate>
         
        
         
         {{ govukRadios({
-          id: "feedback-found-format",
-          name: "[altFormatsV2Journey1].[feedback].[foundFormat]",
-          value: data["altFormatsV2Journey1"]["feedback"]["foundFormat"],
+          id: "braille-type",
+          name: "[altFormatsV2Journey1].[letter].[brailleType]",
+          value: data["altFormatsV2Journey1"]["letter"]["brailleType"],
           fieldset: {
             legend: {
-              text: "Do you need any other help when we contact you?",
+              text: "What type of braille do you need?",
               isPageHeading: true,
               classes: "govuk-fieldset__legend--l"
             }
             
           },
-          hint: {
-            text: "This might include another way to write or speak to you, or help with understanding information we send you."  
-         },
           items: [
             {
-              value: "yes",  
-              text: "Yes"
+              value: "grade-1",  
+              text: "grade-1" | altFormatsV2Journey1Label
             },
             {
-              value: "no",
-              text: "No"
+              value: "grade-2",
+              text: "grade-2" | altFormatsV2Journey1Label
             }
           ]
         }) }}
@@ -51,3 +48,5 @@
     </div>
   </div>
 {% endblock %}
+
+
