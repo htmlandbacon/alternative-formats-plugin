@@ -1,8 +1,8 @@
 const { hasValue, generateUuidv4, cleanData } = require("./utils");
 /**
- * 2. Alternative formats alternative-formats/alternative-formats/v1/journey-3
+ * 2. Alternative formats dwp-alternative-formats-plugin/v1/journey-3
  *
- * Routing for alternative-formats/alternative-formats/v1/journey-3 experience
+ * Routing for dwp-alternative-formats-plugin/v1/journey-3 experience
  */
 
 module.exports = (router) => {
@@ -12,16 +12,16 @@ module.exports = (router) => {
    * Redirects a user to the start of our journey
    *
    */
-  router.get("/alternative-formats/start", (req, res) => {
-    res.redirect("/alternative-formats/v2/journey-1/");
+  router.get("/dwp-alternative-formats-plugin/start", (req, res) => {
+    res.redirect("/dwp-alternative-formats-plugin/v2/journey-1/");
   });
   /**
    * Clear data
    *
-   * Clears only alternative formats alternative-formats/alternative-formats/v1/journey-3 data
+   * Clears only alternative formats dwp-alternative-formats-plugin/v1/journey-3 data
    *
    */
-  router.post("/alternative-formats/v2/journey-1/clear-data", (req, res) => {
+  router.post("/dwp-alternative-formats-plugin/v2/journey-1/clear-data", (req, res) => {
     req.session.data.altFormatsV2Journey1 = {};
 
     res.redirect("./clear-data-success");
@@ -72,7 +72,7 @@ module.exports = (router) => {
    * If no ask for details else redirect to check answers
    */
   router.post(
-    "/alternative-formats/v2/journey-1/feedback-found-format",
+    "/dwp-alternative-formats-plugin/v2/journey-1/feedback-found-format",
     (req, res) => {
       const data = req.session.data.altFormatsV2Journey1;
 
@@ -89,7 +89,7 @@ module.exports = (router) => {
    *
    */
   router.post(
-    "/alternative-formats/v2/journey-1/feedback-format-details",
+    "/dwp-alternative-formats-plugin/v2/journey-1/feedback-format-details",
     (_req, res) => {
       res.redirect("check-answers");
     },
@@ -143,7 +143,7 @@ module.exports = (router) => {
    *
    *  */
   router.get(
-    "/alternative-formats/v2/journey-1/amend/:type/:id",
+    "/dwp-alternative-formats-plugin/v2/journey-1/amend/:type/:id",
     (req, res) => {
       const data = req.session.data.altFormatsV2Journey1;
       const source = data[req.params.type + "s"].find((object) => {
@@ -168,7 +168,7 @@ module.exports = (router) => {
    *
    */
   router.get(
-    "/alternative-formats/v2/journey-1/remove/:type/:id",
+    "/dwp-alternative-formats-plugin/v2/journey-1/remove/:type/:id",
     (req, res) => {
       let formatList =
         req.session.data.altFormatsV2Journey1[req.params.type + "s"];
@@ -176,7 +176,7 @@ module.exports = (router) => {
         return object.id == req.params.id;
       });
 
-      res.render("../views/alternative-formats/v2/journey-1/remove.html", {
+      res.render("../views/dwp-alternative-formats-plugin/v2/journey-1/remove.html", {
         format: toDelete,
         type: req.params.type,
       });
@@ -189,7 +189,7 @@ module.exports = (router) => {
    * Delete format from session if yes and redirect to check answers, else go back to check answers
    */
   router.post(
-    "/alternative-formats/v2/journey-1/remove/:type/:id",
+    "/dwp-alternative-formats-plugin/v2/journey-1/remove/:type/:id",
     (req, res) => {
       if (req.body.removeConfirmation === "yes") {
         let formatList =
@@ -212,8 +212,8 @@ module.exports = (router) => {
    */
   router.get(
     [
-      "/alternative-formats/v2/journey-1/index",
-      "/alternative-formats/v2/journey-1/",
+      "/dwp-alternative-formats-plugin/v2/journey-1/index",
+      "/dwp-alternative-formats-plugin/v2/journey-1/",
     ],
     (_req, _res, next) => {
       next();
@@ -224,7 +224,7 @@ module.exports = (router) => {
    * POST: how-would-you-like-letters - redirect to set format options if available or go to call options
    */
   router.post(
-    "/alternative-formats/v2/journey-1/how-would-you-like-letters",
+    "/dwp-alternative-formats-plugin/v2/journey-1/how-would-you-like-letters",
     (req, res, next) => {
       let letterFormat;
 
@@ -277,7 +277,7 @@ module.exports = (router) => {
    * POST: non-standard-letter - collate what non-standrd options to set
    */
   router.post(
-    "/alternative-formats/v2/journey-1/non-standard-letter",
+    "/dwp-alternative-formats-plugin/v2/journey-1/non-standard-letter",
     (req, res, next) => {
       const letterFormat = req.session.data.altFormatsV2Journey1.letter;
       const nonStandardletter = letterFormat.nonStandardletter;
@@ -355,7 +355,7 @@ module.exports = (router) => {
    * POST: large-print - set font size and check if other options to set
    */
   router.post(
-    "/alternative-formats/v2/journey-1/large-print",
+    "/dwp-alternative-formats-plugin/v2/journey-1/large-print",
     (req, res, next) => {
       gotoCallOptions(req, res, next); // end letter question and go to next step
     },
@@ -365,7 +365,7 @@ module.exports = (router) => {
    * POST: coloured-paper - set colour and check if other options to set
    */
   router.post(
-    "/alternative-formats/v2/journey-1/coloured-paper",
+    "/dwp-alternative-formats-plugin/v2/journey-1/coloured-paper",
     (req, res, next) => {
       let nonStandardletter = req.session.data.altFormatsV2Journey1.letter
         .nonStandardletter
@@ -390,7 +390,7 @@ module.exports = (router) => {
    * GET: bold-text - set bold font doing this so it maintains order in check your answers
    */
   router.get(
-    "/alternative-formats/v2/journey-1/bold-text",
+    "/dwp-alternative-formats-plugin/v2/journey-1/bold-text",
     (req, res, next) => {
       req.session.data.altFormatsV2Journey1.letter["boldText"] = "bold-text";
 
@@ -418,7 +418,7 @@ module.exports = (router) => {
   /**
    * POST: font - set font and check if other options to set
    */
-  router.post("/alternative-formats/v2/journey-1/font", (req, res, next) => {
+  router.post("/dwp-alternative-formats-plugin/v2/journey-1/font", (req, res, next) => {
     let nonStandardletter = req.session.data.altFormatsV2Journey1.letter
       .nonStandardletter
       ? req.session.data.altFormatsV2Journey1.letter.nonStandardletter
@@ -441,7 +441,7 @@ module.exports = (router) => {
    * GET: double-line-spacing - set double line spacing doing this so it maintains order in check your answers
    */
   router.get(
-    "/alternative-formats/v2/journey-1/double-line-spacing",
+    "/dwp-alternative-formats-plugin/v2/journey-1/double-line-spacing",
     (req, res, next) => {
       req.session.data.altFormatsV2Journey1.letter["doubleLineSpacing"] =
         "double-line-spacing";
@@ -463,7 +463,7 @@ module.exports = (router) => {
    * POST: british-sign-language-video - redirect to email question or move to call options
    */
   router.post(
-    "/alternative-formats/v2/journey-1/british-sign-language-video",
+    "/dwp-alternative-formats-plugin/v2/journey-1/british-sign-language-video",
     (req, res, next) => {
       if (
         req.session.data.altFormatsV2Journey1.letter.format ==
@@ -480,7 +480,7 @@ module.exports = (router) => {
   /**
    * POST: audio - redirect to email question or move to call options
    */
-  router.post("/alternative-formats/v2/journey-1/audio", (req, res, next) => {
+  router.post("/dwp-alternative-formats-plugin/v2/journey-1/audio", (req, res, next) => {
     if (
       req.session.data.altFormatsV2Journey1.letter.format == "audio" &&
       req.session.data.altFormatsV2Journey1.letter.audioFormat == "mp3"
@@ -497,7 +497,7 @@ module.exports = (router) => {
    * POST: accessible-document - set document type
    */
   router.post(
-    "/alternative-formats/v2/journey-1/accessible-document",
+    "/dwp-alternative-formats-plugin/v2/journey-1/accessible-document",
     (_req, res) => {
       res.redirect("./accessible-document-email");
     },
@@ -508,46 +508,46 @@ module.exports = (router) => {
    */
 
   router.post(
-    "/alternative-formats/v2/journey-1/non-standard-letter-other",
+    "/dwp-alternative-formats-plugin/v2/journey-1/non-standard-letter-other",
     (req, res, next) => {
       gotoCallOptions(req, res, next);
     },
   );
-  router.post("/alternative-formats/v2/journey-1/braille", (req, res, next) => {
+  router.post("/dwp-alternative-formats-plugin/v2/journey-1/braille", (req, res, next) => {
     gotoCallOptions(req, res, next);
   });
   router.post(
-    "/alternative-formats/v2/journey-1/british-sign-language-mpeg-email",
+    "/dwp-alternative-formats-plugin/v2/journey-1/british-sign-language-mpeg-email",
     (req, res, next) => {
       gotoCallOptions(req, res, next);
     },
   );
   router.post(
-    "/alternative-formats/v2/journey-1/audio-mp3-email",
+    "/dwp-alternative-formats-plugin/v2/journey-1/audio-mp3-email",
     (req, res, next) => {
       gotoCallOptions(req, res, next);
     },
   );
   router.post(
-    "/alternative-formats/v2/journey-1/pdf-email",
+    "/dwp-alternative-formats-plugin/v2/journey-1/pdf-email",
     (req, res, next) => {
       gotoCallOptions(req, res, next);
     },
   );
   router.post(
-    "/alternative-formats/v2/journey-1/word-email",
+    "/dwp-alternative-formats-plugin/v2/journey-1/word-email",
     (req, res, next) => {
       gotoCallOptions(req, res, next);
     },
   );
   router.post(
-    "/alternative-formats/v2/journey-1/email-reasonable-adjustment-letter",
+    "/dwp-alternative-formats-plugin/v2/journey-1/email-reasonable-adjustment-letter",
     (req, res, next) => {
       gotoCallOptions(req, res, next);
     },
   );
   router.post(
-    "/alternative-formats/v2/journey-1/letter-other",
+    "/dwp-alternative-formats-plugin/v2/journey-1/letter-other",
     (req, res, next) => {
       gotoCallOptions(req, res, next);
     },
@@ -557,7 +557,7 @@ module.exports = (router) => {
    * POST: how-would-you-like-phone-calls - redirect set format options if available or go to check answers
    */
   router.post(
-    "/alternative-formats/v2/journey-1/how-would-you-like-phone-calls",
+    "/dwp-alternative-formats-plugin/v2/journey-1/how-would-you-like-phone-calls",
     (req, res, next) => {
       let phoneCallFormat;
 
@@ -598,7 +598,7 @@ module.exports = (router) => {
    * POST: signing-lipspeaking - redirect to signing-lipspeaking-other question
    */
   router.post(
-    "/alternative-formats/v2/journey-1/signing-lipspeaking",
+    "/dwp-alternative-formats-plugin/v2/journey-1/signing-lipspeaking",
     (req, res, next) => {
       if (hasValue(req.session.data.altFormatsV2Journey1.phoneCall)) {
         if (
@@ -614,31 +614,31 @@ module.exports = (router) => {
   );
 
   router.post(
-    "/alternative-formats/v2/journey-1/relay-uk",
+    "/dwp-alternative-formats-plugin/v2/journey-1/relay-uk",
     (req, res, next) => {
       setPhoneData(req, res, next);
     },
   );
   router.post(
-    "/alternative-formats/v2/journey-1/textphone",
+    "/dwp-alternative-formats-plugin/v2/journey-1/textphone",
     (req, res, next) => {
       setPhoneData(req, res, next);
     },
   );
   router.post(
-    "/alternative-formats/v2/journey-1/signing-lipspeaking-other",
+    "/dwp-alternative-formats-plugin/v2/journey-1/signing-lipspeaking-other",
     (req, res, next) => {
       setPhoneData(req, res, next);
     },
   );
   router.post(
-    "/alternative-formats/v2/journey-1/phone-call-other",
+    "/dwp-alternative-formats-plugin/v2/journey-1/phone-call-other",
     (req, res, next) => {
       setPhoneData(req, res, next);
     },
   );
   router.post(
-    "/alternative-formats/v2/journey-1/email-reasonable-adjustment-phone-call",
+    "/dwp-alternative-formats-plugin/v2/journey-1/email-reasonable-adjustment-phone-call",
     (req, res, next) => {
       setPhoneData(req, res, next);
     },
