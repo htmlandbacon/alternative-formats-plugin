@@ -12,7 +12,9 @@ To use this plugin, first start a prototype by installing the GOV.UK Prototype K
 
 In the folder that contains your prototype, install the plugin by running the following terminal command:
 
-`npm install https://github.com/dwp/alternative-formats-files-prototype`
+```bash
+npm install https://github.com/dwp/alternative-formats-files-prototype
+```
 
 ### 2. Add the following code to your prototype's app/routes.js file
 
