@@ -13,15 +13,15 @@ To use this plugin, first start a prototype by installing the GOV.UK Prototype K
 In the folder that contains your prototype, install the plugin by running the following terminal command:
 
 ```bash
-npm install https://github.com/dwp/alternative-formats-files-prototype
+npm install https://github.com/dwp/alternative-formats-plugin
 ```
 
 ### 2. Add the following code to your prototype's app/routes.js file
 
 ```js
-const alternativeFormatsPrototype = require("alternative-formats-files-prototype");
+const alternativeFormatsPlugin = require("alternative-formats-plugin");
 
-alternativeFormatsPrototype(router);
+alternativeFormatsPlugin(router);
 ```
 
 ### 3. Add the pattern to your prototype
