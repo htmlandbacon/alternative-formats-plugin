@@ -1,34 +1,45 @@
-# alternative-formats-files-prototype
+# Alternative contact formats plugin for the GOV.UK prototype kit
 
-A selection of views and routes for alternative formats a prototype
+A plugin user flow for alternative contact formats, for use with the [GOV.UK Prototype Kit](https://prototype-kit.service.gov.uk/docs/).
 
-## Using with the prototype kit
+This plugin allows you to insert the full [DWP Choose alternative contact formats pattern](https://design-system.dwp.gov.uk/patterns/alternative-formats) into a prototype with minimal coding. It includes pages, routes and logic for collecting information about users' written and spoken contact needs.
 
-1. Install this repo
+## Requirements
 
-```
-npm install github:dwp/alternative-formats-files-prototype
-```
+To use this plugin, first start a prototype by installing the GOV.UK Prototype Kit (version 13 or later).
 
-2. Include the routes
+### 1. Install the plugin
 
-```
-// Add your routes normally this would be routes.js
+In the folder that contains your prototype, install the plugin by running the following terminal command:
 
+`npm install https://github.com/dwp/alternative-formats-files-prototype`
+
+### 2. Add the following code to your prototype's app/routes.js file
+
+```js
 const alternativeFormatsPrototype = require("alternative-formats-files-prototype");
 
 alternativeFormatsPrototype(router);
 ```
 
-3. Access the page, you can do this via a redirect or a link. You will need to set the alternative_formats_exit_url to where you want the exit page to go
+### 3. Add the pattern to your prototype
 
-```
-{# example of a start button #}
+Link or redirect from any page in your prototype as shown below. In this example the link is a "Continue" button.
+
+```jinja
+
+{# Example of a Continue button #}
 {{ 
     govukButton({
-        text: "Start now",
-        href: "/dwp-alternative-formats-plugin/start?alternative_formats_exit_url=/end",
-        isStartButton: true
+        text: "Continue",
+        href: "/dwp-alternative-formats-plugin/start?alternative_formats_exit_url=/your-exit-url",
+        isStartButton: false
     })
 }}
 ```
+
+This link also controls what happens next when the user finishes choosing contact formats. In the link, replace `/your-exit-url` with the URL that should load when the user selects "Continue" on the last page of the pattern (the Check answers page).
+
+(See [Use links to set data](https://prototype-kit.service.gov.uk/docs/pass-data#use-links-to-set-data) for more about how this works.)
+
+The user's answers are stored in the browser session and will be cleared (along with any other stored session data) by the "Clear data" link in the prototype footer.
