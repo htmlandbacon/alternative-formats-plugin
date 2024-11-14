@@ -1,5 +1,5 @@
 {
-  "name": "alternative-formats-files-prototype",
+  "name": "alternative-formats-plugin",
   "version": "0.1.0",
   "description": "A select of views and routes for alternative formats a prototype",
   "main": "index.js",
